@@ -38,6 +38,7 @@ class FixCBDFirmwarePlugin(octoprint.plugin.OctoPrintPlugin):
     def rewrite_received(self, comm_instance, line, *args, **kwargs):
         line = self._rewrite_wait_to_busy(line)
         line = self._rewrite_identifier(line)
+        line = self._rewrite_sd_init(line)
         return line
 
     def _rewrite_wait_to_busy(self, line):
@@ -62,6 +63,14 @@ class FixCBDFirmwarePlugin(octoprint.plugin.OctoPrintPlugin):
             return rewritten
 
         return line
+
+    def _rewrite_sd_init(self, line):
+        # change sd init response from //size: ____ to SD card ok
+        if line ==  "//size:" or line.startswith("//size:"):
+            self._log_replacement("sd_init", line, "SD card ok")
+            return "SD card ok"
+        else:
+            return line
 
     def _log_replacement(self, t, orig, repl, only_once=False):
         if not only_once or not self._logged_replacement.get(t, False):
