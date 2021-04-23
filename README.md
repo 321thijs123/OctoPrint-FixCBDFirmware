@@ -12,7 +12,6 @@ Installing this plugin should make any printers shipped with this broken firmwar
 
 ## Setup
 
-Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
-or manually using this URL:
+Install manually using this URL:
 
-    https://github.com/OctoPrint/OctoPrint-FixCBDFirmware/archive/master.zip
+    https://github.com/321thijs123/OctoPrint-FixCBDFirmware/archive/master.zip
